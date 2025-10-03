@@ -39,17 +39,17 @@ const NotificationPanel = () => {
   const loadSoilHistory = async () => {
     try {
       setLoading(true);
-      const history = await firebaseUtils.readOnce('soilmoisture/history');
+      const history = await firebaseUtils.readOnce('soilhistory');
       
       if (history) {
         const readings: SoilReading[] = Object.entries(history).map(([id, data]: [string, any]) => ({
           id,
-          moisture: data.moisture || data.value,
-          timestamp: data.timestamp
+          moisture: typeof data.soilmoisture === 'number' ? data.soilmoisture : 0,
+          timestamp: Date.now() // Using current time as fallback since timestamp might not be stored
         }));
         
-        // Sort by timestamp (newest first)
-        readings.sort((a, b) => b.timestamp - a.timestamp);
+        // Sort by ID (newest entries typically have later IDs)
+        readings.reverse();
         setSoilHistory(readings.slice(0, 50)); // Show latest 50 readings
       } else {
         setSoilHistory([]);
@@ -79,7 +79,7 @@ const NotificationPanel = () => {
 
     try {
       setDeleting(true);
-      await firebaseUtils.write('soilmoisture/history', null);
+      await firebaseUtils.write('soilhistory', null);
       setSoilHistory([]);
       toast({
         title: "Success",
@@ -108,7 +108,7 @@ const NotificationPanel = () => {
     });
 
     // Subscribe to soil moisture history changes
-    const historyRef = firebaseUtils.subscribe('soilmoisture/history', () => {
+    const historyRef = firebaseUtils.subscribe('soilhistory', () => {
       loadSoilHistory();
     });
 
