@@ -20,8 +20,10 @@ const SmartGardenCard = () => {
       console.log('SmartGardenCard - data type:', typeof data);
       
       if (data !== null && data !== undefined) {
-        // Data is a direct number value
-        const value = typeof data === 'number' ? data : 0;
+        // Handle both direct number and object formats
+        const value = typeof data === 'number' 
+          ? data 
+          : (data.value || data.moisture || 0);
         
         console.log('SmartGardenCard - parsed value:', value);
         
