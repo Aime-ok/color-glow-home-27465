@@ -67,10 +67,11 @@ Vibrant, gradient-rich design for modern IoT dashboard.
     --gradient-hero: linear-gradient(135deg, hsl(220 100% 25%), hsl(160 80% 35%), hsl(25 95% 55%));
     --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(240 10% 98%));
 
-    /* Shadows */
-    --shadow-glow: 0 0 30px hsl(220 100% 50% / 0.3);
-    --shadow-card: 0 10px 30px -5px hsl(240 10% 20% / 0.1);
-    --shadow-button: 0 5px 15px -3px hsl(220 100% 25% / 0.3);
+    /* Shadows - Enhanced */
+    --shadow-glow: 0 0 40px hsl(220 100% 50% / 0.4), 0 0 80px hsl(220 100% 50% / 0.2);
+    --shadow-card: 0 10px 40px -10px hsl(240 10% 20% / 0.15), 0 0 0 1px hsl(0 0% 100% / 0.05);
+    --shadow-button: 0 8px 20px -4px hsl(220 100% 25% / 0.4);
+    --shadow-float: 0 20px 60px -15px hsl(240 10% 20% / 0.3);
 
     /* Border Radius */
     --radius: 1rem;
@@ -151,10 +152,11 @@ Vibrant, gradient-rich design for modern IoT dashboard.
     --gradient-hero: linear-gradient(135deg, hsl(220 100% 40%), hsl(160 80% 50%), hsl(25 95% 65%));
     --gradient-card: linear-gradient(145deg, hsl(240 10% 12%), hsl(240 10% 15%));
 
-    /* Shadows */
-    --shadow-glow: 0 0 40px hsl(220 100% 60% / 0.4);
-    --shadow-card: 0 10px 30px -5px hsl(240 10% 5% / 0.3);
-    --shadow-button: 0 5px 15px -3px hsl(220 100% 40% / 0.4);
+    /* Shadows - Enhanced */
+    --shadow-glow: 0 0 50px hsl(220 100% 60% / 0.5), 0 0 100px hsl(220 100% 60% / 0.25);
+    --shadow-card: 0 10px 40px -10px hsl(240 10% 5% / 0.4), 0 0 0 1px hsl(0 0% 100% / 0.1);
+    --shadow-button: 0 8px 20px -4px hsl(220 100% 40% / 0.5);
+    --shadow-float: 0 20px 60px -15px hsl(240 10% 5% / 0.5);
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -182,7 +184,7 @@ Vibrant, gradient-rich design for modern IoT dashboard.
   }
   
   .hover-scale {
-    @apply transition-transform duration-200 hover:scale-105;
+    @apply transition-all duration-300 hover:scale-105 hover:-translate-y-1;
   }
   
   .gradient-text {
@@ -196,5 +198,17 @@ Vibrant, gradient-rich design for modern IoT dashboard.
   
   .float-animation {
     @apply animate-float;
+  }
+  
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-lg border border-white/20 shadow-card;
+  }
+  
+  .glass-button {
+    @apply bg-white/10 backdrop-blur-sm border border-white/30 hover:bg-white/20 transition-all duration-300;
+  }
+  
+  .shimmer {
+    @apply relative overflow-hidden before:absolute before:inset-0 before:-translate-x-full before:animate-shimmer before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent;
   }
 }
