@@ -131,6 +131,7 @@ const AdminDashboard = () => {
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <Tabs defaultValue="dashboard" className="space-y-6">
+          {/* Desktop Tabs */}
           <TabsList className="grid w-full grid-cols-6 bg-white/10 backdrop-blur-sm border-white/20 hidden sm:grid">
             <TabsTrigger value="dashboard" className="text-white data-[state=active]:text-foreground data-[state=active]:bg-white">
               <Home className="w-4 h-4 mr-2" />
@@ -158,32 +159,32 @@ const AdminDashboard = () => {
             </TabsTrigger>
           </TabsList>
           
-          {/* Mobile Navigation Tabs */}
-          <div className="sm:hidden">
-            <TabsList className="flex flex-col w-full bg-white/10 backdrop-blur-sm border-white/20 space-y-2 p-2">
-              <TabsTrigger value="dashboard" className="w-full text-white data-[state=active]:text-foreground data-[state=active]:bg-white">
-                <Home className="w-4 h-4 mr-2" />
-                Dashboard
+          {/* Mobile Tabs - Horizontal Scrollable */}
+          <div className="sm:hidden overflow-x-auto -mx-4 px-4">
+            <TabsList className="inline-flex w-auto min-w-full bg-white/10 backdrop-blur-sm border-white/20 p-1.5 gap-1">
+              <TabsTrigger value="dashboard" className="flex-shrink-0 text-white data-[state=active]:text-foreground data-[state=active]:bg-white px-3">
+                <Home className="w-4 h-4" />
+                <span className="hidden xs:inline ml-2">Dashboard</span>
               </TabsTrigger>
-              <TabsTrigger value="notifications" className="w-full text-white data-[state=active]:text-foreground data-[state=active]:bg-white">
-                <Bell className="w-4 h-4 mr-2" />
-                Notifications
+              <TabsTrigger value="notifications" className="flex-shrink-0 text-white data-[state=active]:text-foreground data-[state=active]:bg-white px-3">
+                <Bell className="w-4 h-4" />
+                <span className="hidden xs:inline ml-2">Notifications</span>
               </TabsTrigger>
-              <TabsTrigger value="password" className="w-full text-white data-[state=active]:text-foreground data-[state=active]:bg-white">
-                <Settings className="w-4 h-4 mr-2" />
-                Change Password
+              <TabsTrigger value="password" className="flex-shrink-0 text-white data-[state=active]:text-foreground data-[state=active]:bg-white px-3">
+                <Settings className="w-4 h-4" />
+                <span className="hidden xs:inline ml-2">Password</span>
               </TabsTrigger>
-              <TabsTrigger value="add-user" className="w-full text-white data-[state=active]:text-foreground data-[state=active]:bg-white">
-                <UserPlus className="w-4 h-4 mr-2" />
-                Add New User
+              <TabsTrigger value="add-user" className="flex-shrink-0 text-white data-[state=active]:text-foreground data-[state=active]:bg-white px-3">
+                <UserPlus className="w-4 h-4" />
+                <span className="hidden xs:inline ml-2">Add User</span>
               </TabsTrigger>
-              <TabsTrigger value="admin-management" className="w-full text-white data-[state=active]:text-foreground data-[state=active]:bg-white">
-                <Users className="w-4 h-4 mr-2" />
-                Admin Management
+              <TabsTrigger value="admin-management" className="flex-shrink-0 text-white data-[state=active]:text-foreground data-[state=active]:bg-white px-3">
+                <Users className="w-4 h-4" />
+                <span className="hidden xs:inline ml-2">Manage</span>
               </TabsTrigger>
-              <TabsTrigger value="history" className="w-full text-white data-[state=active]:text-foreground data-[state=active]:bg-white">
-                <TrendingUp className="w-4 h-4 mr-2" />
-                History
+              <TabsTrigger value="history" className="flex-shrink-0 text-white data-[state=active]:text-foreground data-[state=active]:bg-white px-3">
+                <TrendingUp className="w-4 h-4" />
+                <span className="hidden xs:inline ml-2">History</span>
               </TabsTrigger>
             </TabsList>
           </div>
